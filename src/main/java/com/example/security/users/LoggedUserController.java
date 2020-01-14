@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static com.example.security.users.ControllerMappings.LOGGED_USER;
+import static com.example.security.users.ControllerMappings.LOGGED_USER_PASSWORD_CHANGE;
 import static org.springframework.http.HttpStatus.OK;
 
-@RestController("/logged")
+@RestController(LOGGED_USER)
 public class LoggedUserController {
 
     @Autowired
@@ -23,7 +25,7 @@ public class LoggedUserController {
         return new ResponseEntity(currentlyLogged, OK);
     }
 
-    @PostMapping("/password-change")
+    @PostMapping(LOGGED_USER_PASSWORD_CHANGE)
     ResponseEntity changePassword(HttpServletRequest request) {
         String passwordChangeHeader = request.getHeader(SecurityConstants.PASSWORD_CHANGE);
         userService.changePassword(passwordChangeHeader);

@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.example.security.users.ControllerMappings.USERS;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping(USERS)
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
