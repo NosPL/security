@@ -26,9 +26,9 @@ public class JwtUtils {
                     .verify(token);
             return decodedJWT;
         } catch (AlgorithmMismatchException e) {
-            throw new JwtUtilsException("Jwt tokan has incorrect algorithm");
+            throw new JwtUtilsException("Jwt token has incorrect algorithm");
         } catch (SignatureVerificationException e) {
-            throw new JwtUtilsException("Jwt tokan incorrect signature");
+            throw new JwtUtilsException("Jwt token incorrect signature");
         } catch (TokenExpiredException e) {
             throw new JwtUtilsException("Jwt token has expired");
         } catch (InvalidClaimException e) {
