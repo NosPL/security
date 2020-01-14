@@ -57,6 +57,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
 
     private Authentication getAuthentication(String header) {
+        if (header == null)
+            return authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken("", ""));
         header = header.replace(SecurityConstants.BASIC_, "");
         byte[] decode = Base64.getDecoder().decode(header.getBytes(StandardCharsets.UTF_8));
         String decodedCredentials = new String(decode);
